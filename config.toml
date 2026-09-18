@@ -1,0 +1,42 @@
+# Generation is sequential: one model, bounded memory. workers controls audio checks.
+seed = 20260918
+samples_per_street = 500
+expected_streets = 107
+workers = 2
+threads = 4
+device = "auto"
+output = "dataset"
+
+[llm]
+model = "qwen2.5:1.5b"
+url = "http://127.0.0.1:11434"
+cache = "assets/llm_templates.json"
+
+[augmentation]
+phone_probability = 1.0
+codec_probability = 0.5
+volume_probability = 0.3
+speed_min = 0.95
+speed_max = 1.05
+# Profile-specific noise/clipping probabilities, rather than uniform damage.
+
+[profiles.clean_phone]
+weight = 0.30
+noise_probability = 0.0
+snr_min = 32.0
+snr_max = 38.0
+clip_probability = 0.0
+
+[profiles.normal_phone]
+weight = 0.55
+noise_probability = 0.20
+snr_min = 26.0
+snr_max = 34.0
+clip_probability = 0.01
+
+[profiles.noisy_phone]
+weight = 0.15
+noise_probability = 0.70
+snr_min = 18.0
+snr_max = 26.0
+clip_probability = 0.04
