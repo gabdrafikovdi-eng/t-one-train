@@ -10,9 +10,17 @@ from src.t_one_train.audio import telephone, inspect_audio
 from src.t_one_train.tts import ROOT, VOICES, Silero
 
 
-def test_streets_and_forms():
-    streets, excluded = read_streets(ROOT / "streets.txt")
-    assert len(streets) == 107 and len(excluded) == 1
+def test_streets_and_forms(tmp_path):
+    # fixtures: старый формат «Улица …»/«… улица» — новый streets.txt проекта
+    # («голые» названия) парсится только hotwords.load_streets, а метрики форм
+    # нужны именно от parseable-структуры.
+    fixture = tmp_path / "streets.txt"
+    fixture.write_text(
+        "Страница 1 (улицы 1-2)\nУлица Ленина\nВесенняя улица\nПереулок Искра\nУлица 65 лет Победы\n",
+        encoding="utf-8",
+    )
+    streets, excluded = read_streets(fixture)
+    assert len(streets) == 4 and len(excluded) == 1
     assert forms("Весенняя улица")["pre"] == "весенней улице"
     assert forms("Весенняя улица")["acc"] == "весеннюю улицу"
     assert forms("Улица Ленина")["pre"] == "улице ленина"

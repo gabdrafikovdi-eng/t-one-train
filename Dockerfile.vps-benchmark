@@ -1,0 +1,57 @@
+# Dedicated CPU performance-benchmark image for T-one (VPS).
+# NOT used by any production service (Taxi v3 / speech-service are untouched).
+#
+# Reproducible: every dependency is installed INSIDE the image with pinned
+# versions matching the project's uv.lock (tone 0.1.0 @ 3c5b6c0, pyctcdecode
+# 0.5.0, kenlm 0.3.0, onnxruntime 1.30.0, numpy 1.26.x, scipy, soundfile).
+# The T-one model + official kenlm.bin are NOT baked in: they are downloaded
+# once into the mounted `hf-model-cache` Docker volume (HF_HOME=/cache/huggingface).
+#
+# Build:  docker build -f Dockerfile.vps-benchmark -t t-one-vps-benchmark:latest .
+# Run:    see docker-compose.vps-benchmark.yml
+
+FROM python:3.12-slim
+
+ENV PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    HF_HOME=/cache/huggingface \
+    HF_HUB_DISABLE_TELEMETRY=1 \
+    # hf-xet downloads stall on some VPS kernels; plain HTTP is reliable and
+    # the volume cache makes it a one-time cost either way.
+    HF_HUB_DISABLE_XET=1
+
+# kenlm 0.3.0 builds from source (cmake + g++), soundfile needs libsndfile1,
+# git is needed for the pinned tone git dependency.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential cmake git libsndfile1 curl ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+COPY pyproject.toml README.md uv.lock ./
+COPY streets.txt ./
+COPY src/ ./src/
+COPY scripts/ ./scripts/
+COPY tests/ ./tests/
+
+# Pinned CPU-only dependency set (NO torch — the inference pipeline is
+# onnxruntime + pyctcdecode + kenlm; torch is not used by the benchmark).
+RUN pip install \
+        "numpy>=1.26.4,<2" \
+        "scipy>=1.14,<2" \
+        "soundfile>=0.13.1,<1" \
+        "onnxruntime==1.30.0" \
+        "pyctcdecode==0.5.0" \
+        "kenlm==0.3.0" \
+        "huggingface-hub>=0.34,<1" \
+    && pip install "tone @ git+https://github.com/voicekit-team/T-one@3c5b6c015038173840e62cea99e10cdb1c759116" \
+    && python -c "import tone, pyctcdecode, kenlm, onnxruntime, soundfile, scipy; print('benchmark deps OK')"
+
+# Dataset and results are mounted (see docker-compose.vps-benchmark.yml):
+#   /data/real_dataset  -> results/real_dataset_2026-09-18_17-16-22 (read-only)
+#   /app/results        -> ./results on the host (survives the container)
+#   /cache/huggingface  -> named volume with model.onnx + kenlm.bin (no re-download)
+ENTRYPOINT ["python", "scripts/run_vps_benchmark.py"]
+CMD ["--dataset", "/data/real_dataset", "--streets", "/app/streets.txt", "--out", "/app/results"]

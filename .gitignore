@@ -15,3 +15,27 @@ dataset*/
 diagnostics/
 logs/
 .pytest_cache/
+
+# Ignore all benchmark/results artifacts EXCEPT the real dataset and any
+# explicitly kept reference outputs.
+results/**
+!results/
+!results/real_dataset_2026-09-18_17-16-22/
+!results/real_dataset_2026-09-18_17-16-22/**
+# VPS benchmark outputs are reproducible — never tracked in git
+results/vps_benchmark_*/
+
+# Audio artifacts that are NOT part of the VPS benchmark dataset and must not
+# be collected/used by run_vps_benchmark.sh. Only `*_full.wav` inside the real
+# dataset directory are the reference WAVs; everything else below is excluded.
+results/real_dataset_2026-09-18_17-16-22/audio/*
+!results/real_dataset_2026-09-18_17-16-22/audio/*_full.wav
+
+# HuggingFace model cache (large, reproducible download)
+.hf_cache/
+models--*/
+
+# Docker generated file
+.dockerignore
+
+

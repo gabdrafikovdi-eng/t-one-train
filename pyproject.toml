@@ -13,6 +13,13 @@ dependencies = [
 
 [dependency-groups]
 dev = ["pytest>=8,<9", "jiwer>=3.0.3,<4"]
+# Decoder experiment only (scripts/test_decoders.py): official T-one runtime +
+# pyctcdecode/kenlm + microphone capture. Not used by dataset generation.
+#   uv sync --group decoders
+decoders = [
+    "tone @ git+https://github.com/voicekit-team/T-one",
+    "sounddevice>=0.5,<1",
+]
 
 # PC-only (RTX 4060, CUDA): exactly the official T-one finetune extra plus CUDA
 # torch. Never installed on the Mac during dataset generation.

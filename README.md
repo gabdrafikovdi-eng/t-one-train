@@ -143,6 +143,159 @@ text/audio/family. Полная статистика по каждой улиц�
 `stats` показывает ранее рассчитанный отчёт. В RAM нет всего аудио —
 только один sample и компактные индексы для контроля дубликатов.
 
+## Независимый real-world evaluation set (ручная запись)
+
+Отдельный набор для **объективной оценки** ASR на реальной речи (телефонные звонки
+такси, локальные названия улиц). Он независим от датасета генерации:
+
+- **не** используется для fine-tuning T-one;
+- **не** является источником hotwords — hotwords строятся только из `streets.txt`;
+- один и тот же набор WAV + reference переиспользуется между экспериментами
+  (изменение набора ломает сравнимость).
+
+```
+streets.txt ──┬──→ hotwords ──→ decoder
+              └──→ reference для ручных записей ──→ evaluation set
+```
+
+### Запись
+
+```bash
+uv run python scripts/record_real_dataset.py            # продолжить последний / создать новый
+uv run python scripts/record_real_dataset.py --new      # принудительно новый dataset
+uv run python scripts/record_real_dataset.py --dataset results/real_dataset_XXX/
+uv run python scripts/record_real_dataset.py --limit 2  # smoke: только 2 улицы
+uv run python scripts/validate_real_dataset.py          # последний dataset
+uv run python scripts/validate_real_dataset.py results/real_dataset_XXX/
+```
+
+Запись требует `sounddevice` (группа `decoders`): если модуль отсутствует, скрипт
+попросит `uv sync --group decoders` и предложит запуск через
+`uv run --group decoders python scripts/record_real_dataset.py`. Валидация и
+парсинг `streets.txt` от микрофона не зависят. `--limit N` создаёт набор только
+для первых N улиц — не смешивайте такой smoke-набор с полным прогоном
+(`dataset.json` фиксирует план, поэтому валидация сообщит о записях вне плана).
+
+Порядок работы: для каждой улицы из `streets.txt` (в файловом порядке) —
+три варианта записи, в каждом: показать reference → ENTER старт записи →
+говорите → ENTER стоп → воспроизведение → `ENTER` сохранить / `r` перезаписать /
+`e` изменить текст / `s` пропустить / `q` выйти. **VAD нет**: запись начинается и
+заканчивается только по ENTER. При каждом сохранении обновляются
+`manifest.jsonl`, `manifest.csv`, `dataset.json`, `README.md`. Ctrl+C завершает
+сессию корректно, прогресс сохраняется — следующий запуск продолжит с первой
+незаписанной позиции (`--new` начинает с нуля).
+
+### Текущий формат streets.txt
+
+Актуальная версия файла содержит **109 названий без слов типа улицы** (например
+`Абзелиловская`, `Ак Кайын`, `Сорок лет Победы`), порядок строк = порядок записи.
+Поэтому FULL reference — ровно строка файла, а «улица»/«переулок» не добавляются.
+Слова типа всё равно поддерживаются парсером (если появятся в файле): они
+распознаются и не дублируются. Строки-заголовки («Страница N (улицы M–K)») и
+пустые строки отбрасываются и попадают в `excluded` в `dataset.json`; дубликаты и
+недопустимые символы — ошибка. `streets.txt` никогда не изменяется кодом.
+
+### Варианты записи
+
+| variant | смысл |
+|---|---|
+| `FULL` | дословная строка из `streets.txt`; тип улицы (`улица`/`переулок`) **не добавляется** автоматически; reference не редактируется |
+| `SHORT` | короткий вариант произношения, если он реально используется. **Вводится пользователем** после промпта `Введите короткий вариант или - чтобы пропустить:`. ENTER или `-` = пропуск записи (создаётся `status: "skipped"`, аудио не пишется). Никаких автоматических сокращений и никаких предложенных программой вариантов |
+| `NATURAL` | реальная фраза целиком, **вводится пользователем** после промпта `Введите реальную фразу, которую вы будете произносить:` — с правильным падежом («До Абзелиловской», «До Хисматуллина», «На Ленина»). ENTER или `-` = пропуск. reference = введённая фраза, `reference` = её нормализация |
+
+SHORT и NATURAL **не генерируются программой**: нет ни склонения названий, ни
+подстановки предлогов. Ранее использовавшаяся автогенерация вида `До <street>`
+давала грамматически неверные фразы («До Абзелиловская») и удалена вместе с
+подсказками коротких форм. Перед записью reference всегда показывается на экране
+(`NATURAL: До Абзелиловской`) с указанием «Произнесите ровно эту фразу.» — то,
+что сохранено, всегда совпадает с тем, что реально произнесено.
+
+Наборы, записанные до этого исправления, могли содержать автогенерированные
+NATURAL-фразы (например `reference_raw: "До Абзелиловская"`). Валидация такие
+фразы не помечает — она проверяет формат, а не грамматику, поэтому такой набор
+считайте черновым и перезапишите его через `--new`.
+
+### Формат и нормализация
+
+Аудио: **mono, 8000 Hz, PCM16 WAV**. Запись идёт на native sample rate микрофона
+(Mac, обычно 48000 Hz float32) → resample → 8000 Hz → PCM16. Без шумов, G.711,
+сжатия, дисторшна и аугментаций — это реальные чистые записи.
+
+Reference хранится в двух видах: `reference_raw` (как произнесено/введено) и
+`reference` (для WER/CER): lowercase, пунктуация удалена, цифры → слова
+(сначала проверенные числительные улиц из `forms.NUMERALS`, иначе обычные русские
+числительные — например «дом 31» → «дом тридцать один»), остаются только русские
+буквы и пробелы. Русские числительные в цифры не конвертируются, название улицы
+не подменяется.
+
+### Структура и метрики
+
+```
+results/real_dataset_<timestamp>/
+  audio/street_001_full.wav   street_001_short.wav   street_001_natural.wav
+  manifest.jsonl  manifest.csv  dataset.json  README.md
+```
+
+`manifest.jsonl`: `id`, `street_index`, `street`, `variant`, `status`,
+`reference_raw`, `reference`, `audio`, `sample_rate`, `channels`, `duration_sec`.
+`dataset.json` фиксирует provenance: путь и sha256 `streets.txt`, порядок улиц,
+число записей, формат аудио и назначение (не fine-tuning, не hotwords).
+
+Валидация проверяет: наличие/читаемость WAV, 8000 Hz, mono, PCM16, длительность
+> 0, соответствие manifest плану (`street`/`variant`), дубликаты `id`, пустые
+reference, отсутствующие/лишние файлы. Пропущенные (`status: "skipped"`) записи
+ошибкой не считаются: они сохраняются в manifest как явный факт пропуска, поэтому
+resume не предлагает их повторно (перезаписать пропущенную можно через
+`--dataset <dir>` и удаление её строки, либо созданием нового набора).
+
+### Эксперимент: дополнительные формы hotwords (109 реальных записей)
+
+Отдельный экспериментальный слой; production (decoder, `hotwords.py`, веса) не меняется.
+
+- `src/t_one_train/street_hotword_forms_experiment.json` — словарь дополнительных форм
+  (`Советская → Советской`, `Искра → Искры, Искре`, `Караташ → Караташа, Караташе`, …).
+  Антропонимы («Мусы Муртазина», «Файзрахмана Хисматуллина» и т. п.) и числовые названия
+  («Сорок лет Победы», …) **не** склоняются: сохраняется canonical-форма.
+- `src/t_one_train/street_forms_experiment.py` — чистая логика: загрузка/валидация
+  словаря, сборка canonical + experimental hotwords, индекс форм улиц, детекция улиц,
+  классификация изменений. Без tone/pyctcdecode — тестируется headless.
+- `scripts/run_street_hotword_experiment.py` — сравнение greedy / beam без hotwords /
+  beam + canonical / beam + canonical + experimental forms на 109 FULL-записях.
+  Acoustic model запускается **один раз на WAV**, logprobs кэшируются в npz, и все
+  конфигурации декодируются на одном и том же кэше.
+
+```bash
+uv run --group decoders python scripts/run_street_hotword_experiment.py \
+    --dataset-dir results/real_dataset_2026-09-18_17-16-22 --weights 1,3,5,7,10
+```
+
+Ground-truth транскрипта у набора нет, поэтому WER/CER не считаются: метрика —
+наличие произнесённого названия улицы (`street_exact_match`) и классификация изменений
+относительно beam-без-hotwords (`helped` / `harmed` / `neither` / `requires_manual_review`).
+Результат: `results/street_hotword_experiment_<timestamp>/`.
+
+### Real-voice A/B/C/D тест с микрофона (Greedy / Beam / Canonical @10 / Canonical @15)
+
+Ручной интерактивный тест: говорите фразы с улицами в микрофон и сразу видите
+распознавание РОВНО четырёх конфигураций на одной записи. Акустическая модель
+запускается один раз на фразу — все четыре декодера работают на одних и тех же
+logprobs. Decoders и KenLM загружаются один раз на сессию.
+
+```bash
+uv run --group decoders python scripts/test_decoders.py --mic
+```
+
+Цикл: введите expected street (Enter — без оценки; используется ТОЛЬКО для
+проверки результата, декодеру не передаётся) → ENTER начать запись → говорите →
+ENTER остановить → блок RESULT (текст + `street: FOUND/NOT FOUND` + `changed`
+/ `helped` относительно Beam) → ENTER — следующая фраза, `q` — завершить и
+получить SESSION SUMMARY (correct/helped/harmed по оценённым фразам).
+
+Каждая запись сохраняется: WAV (8 kHz mono PCM16) + per-phrase JSON +
+`results.jsonl`/`results.csv` + `session_summary.json` в уникальном каталоге
+`results/<YYYY-MM-DD_HH-MM-SS>/`. Тот же скрипт умеет прогонять уже записанные
+файлы: `--audio путь.wav` и `--audio-dir каталог/` (те же 4 конфигурации).
+
 ## Ограничения и следующий эксперимент
 
 Автоматическая проверка не подтверждает ударения и фонетику башкирских
@@ -220,3 +373,65 @@ python -m src.t_one_train.street_metrics --test dataset/test.jsonl --predictions
 решать вопрос о внешнем лицензированном телефонном ASR dataset; на первом
 эксперименте внешние данные (Common Voice / Golos / SOVA / OpenSTT) не
 подключаются намеренно.
+
+## CPU performance benchmark (VPS)
+
+Воспроизводимый benchmark **производительности** эталонной конфигурации T-one
+на CPU (качество не меняется; используется та же конфигурация, что дала
+95/109 = 87.2% reference found на реальном dataset):
+
+- T-one (официальный ONNX, `t-tech/T-one`)
+- официальный `kenlm.bin` (HF-hub)
+- pyctcdecode CTC Beam Search: `beam_width=200`, `alpha=0.4`, `beta=0.9`
+- Canonical hotwords из `streets.txt`, `hotword_weight=10`
+
+### Одна команда на VPS
+
+```bash
+./scripts/run_vps_benchmark.sh
+```
+
+(эквивалент: `docker compose -f docker-compose.vps-benchmark.yml up --build --abort-on-container-exit`)
+
+Что происходит автоматически: сборка image (`Dockerfile.vps-benchmark`) → запуск
+контейнера → загрузка T-one + официального KenLM (кэшируются в Docker volume
+`hf-model-cache`, повторно не скачиваются) → построение canonical hotwords из
+`streets.txt` → cold start → **sequential baseline** по всем 109 FULL WAV из
+`results/real_dataset_2026-09-18_17-16-22/` → sweep ORT-потоков (1/2/4/6) →
+concurrency (2/4/6, 1 thread/задача) → комбинированные варианты
+threads=concurrency → CPU/RAM мониторинг → `summary.json` + `summary.md` +
+raw-результаты на **host** в `results/vps_benchmark_<timestamp>/`.
+
+Параметры прогона можно переопределить без правки compose:
+
+```bash
+./scripts/run_vps_benchmark.sh --limit 5            # smoke-тест на 5 WAV
+BENCHMARK_ARGS="--skip-threads" ./scripts/run_vps_benchmark.sh
+```
+
+### Метрики
+
+Для каждого файла: `filename`, `reference`, `hypothesis`,
+`audio_duration_seconds`, `model_inference_seconds` (ONNX forward),
+`decoder_seconds` (beam+KenLM), `total_inference_seconds`, `RTF`,
+`exact_match`, `reference_found`, `acoustic_score`/`combined_score`.
+Агрегаты по каждому режиму: mean/p50/p90/p95/p99/min/max latency, RTF,
+wall-clock, throughput, CPU/RAM (peak/mean). Отдельно: `startup_total_seconds`
+(cold start, не входит в latency) и determinism-проверка (гипотезы всех режимов
+должны совпадать с baseline).
+
+### Файлы
+
+| Файл | Назначение |
+|---|---|
+| `scripts/run_vps_benchmark.sh` | одна команда: build + run (host) |
+| `docker-compose.vps-benchmark.yml` | benchmark-only compose (production не затрагивает) |
+| `Dockerfile.vps-benchmark` | CPU image: tone + pyctcdecode + kenlm + onnxruntime |
+| `scripts/run_vps_benchmark.py` | runner всех экспериментов |
+| `src/t_one_train/vps_benchmark.py` | метрики, план экспериментов, summary/MD, CPU/RAM sampler |
+| `src/t_one_train/test_decoders_core.py` | общий pipeline с quality-benchmark (`load_acoustic_model`, `load_beam_decoder`, `decode_with_scores`) |
+| `tests/test_vps_benchmark.py` | headless unit-тесты метрик и плана |
+
+Beam-width sweep (50/100/150) — опциональный CLI-режим, в автоматический прогон
+не входит: `BENCHMARK_ARGS="--beam-sweep 50 100 150" ./scripts/run_vps_benchmark.sh`.
+

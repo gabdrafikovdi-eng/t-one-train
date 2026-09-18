@@ -1,0 +1,328 @@
+id,street_index,street,variant,status,reference_raw,reference,audio,sample_rate,channels,duration_sec
+street_001_full,1,Абзелиловская,full,saved,Абзелиловская,абзелиловская,audio/street_001_full.wav,8000,1,1.536
+street_001_short,1,Абзелиловская,short,skipped,,,,,,
+street_001_natural,1,Абзелиловская,natural,skipped,,,,,,
+street_002_full,2,Ак Кайын,full,saved,Ак Кайын,ак кайын,audio/street_002_full.wav,8000,1,2.603
+street_002_short,2,Ак Кайын,short,skipped,,,,,,
+street_002_natural,2,Ак Кайын,natural,skipped,,,,,,
+street_003_full,3,Александра Пушкина,full,saved,Александра Пушкина,александра пушкина,audio/street_003_full.wav,8000,1,2.155
+street_003_short,3,Александра Пушкина,short,skipped,,,,,,
+street_003_natural,3,Александра Пушкина,natural,skipped,,,,,,
+street_004_full,4,Ахмет Заки Валиди,full,saved,Ахмет Заки Валиди,ахмет заки валиди,audio/street_004_full.wav,8000,1,3.957
+street_004_short,4,Ахмет Заки Валиди,short,skipped,,,,,,
+street_004_natural,4,Ахмет Заки Валиди,natural,skipped,,,,,,
+street_005_full,5,Ахмета Лутфуллина,full,saved,Ахмета Лутфуллина,ахмета лутфуллина,audio/street_005_full.wav,8000,1,2.709
+street_005_short,5,Ахмета Лутфуллина,short,skipped,,,,,,
+street_005_natural,5,Ахмета Лутфуллина,natural,skipped,,,,,,
+street_006_full,6,Бииш Батыра,full,saved,Бииш Батыра,бииш батыра,audio/street_006_full.wav,8000,1,2.325
+street_006_short,6,Бииш Батыра,short,skipped,,,,,,
+street_006_natural,6,Бииш Батыра,natural,skipped,,,,,,
+street_007_full,7,Валиахмета Сулейманова,full,saved,Валиахмета Сулейманова,валиахмета сулейманова,audio/street_007_full.wav,8000,1,3.467
+street_007_short,7,Валиахмета Сулейманова,short,skipped,,,,,,
+street_007_natural,7,Валиахмета Сулейманова,natural,skipped,,,,,,
+street_008_full,8,Вафира Тайсина,full,saved,Вафира Тайсина,вафира тайсина,audio/street_008_full.wav,8000,1,2.293
+street_008_short,8,Вафира Тайсина,short,skipped,,,,,,
+street_008_natural,8,Вафира Тайсина,natural,skipped,,,,,,
+street_009_full,9,Весенняя,full,saved,Весенняя,весенняя,audio/street_009_full.wav,8000,1,2.741
+street_009_short,9,Весенняя,short,skipped,,,,,,
+street_009_natural,9,Весенняя,natural,skipped,,,,,,
+street_010_full,10,Гагарина,full,saved,Гагарина,гагарина,audio/street_010_full.wav,8000,1,1.696
+street_010_short,10,Гагарина,short,skipped,,,,,,
+street_010_natural,10,Гагарина,natural,skipped,,,,,,
+street_011_full,11,Гинията Ушанова,full,saved,Гинията Ушанова,гинията ушанова,audio/street_011_full.wav,8000,1,2.667
+street_011_short,11,Гинията Ушанова,short,skipped,,,,,,
+street_011_natural,11,Гинията Ушанова,natural,skipped,,,,,,
+street_012_full,12,Горная,full,saved,Горная,горная,audio/street_012_full.wav,8000,1,4.021
+street_012_short,12,Горная,short,skipped,,,,,,
+street_012_natural,12,Горная,natural,skipped,,,,,,
+street_013_full,13,Дружбы,full,saved,Дружбы,дружбы,audio/street_013_full.wav,8000,1,2.336
+street_013_short,13,Дружбы,short,skipped,,,,,,
+street_013_natural,13,Дружбы,natural,skipped,,,,,,
+street_014_full,14,Емельяна Пугачева,full,saved,Емельяна Пугачева,емельяна пугачева,audio/street_014_full.wav,8000,1,2.997
+street_014_short,14,Емельяна Пугачева,short,skipped,,,,,,
+street_014_natural,14,Емельяна Пугачева,natural,skipped,,,,,,
+street_015_full,15,Загира Исмагилова,full,saved,Загира Исмагилова,загира исмагилова,audio/street_015_full.wav,8000,1,3.051
+street_015_short,15,Загира Исмагилова,short,skipped,,,,,,
+street_015_natural,15,Загира Исмагилова,natural,skipped,,,,,,
+street_016_full,16,Зайнаб Биишевой,full,saved,Зайнаб Биишевой,зайнаб биишевой,audio/street_016_full.wav,8000,1,2.539
+street_016_short,16,Зайнаб Биишевой,short,skipped,,,,,,
+street_016_natural,16,Зайнаб Биишевой,natural,skipped,,,,,,
+street_017_full,17,Идяш,full,saved,Идяш,идяш,audio/street_017_full.wav,8000,1,1.429
+street_017_short,17,Идяш,short,skipped,,,,,,
+street_017_natural,17,Идяш,natural,skipped,,,,,,
+street_018_full,18,Иншара Султанбаева,full,saved,Иншара Султанбаева,иншара султанбаева,audio/street_018_full.wav,8000,1,2.709
+street_018_short,18,Иншара Султанбаева,short,skipped,,,,,,
+street_018_natural,18,Иншара Султанбаева,natural,skipped,,,,,,
+street_019_full,19,Ирандык,full,saved,Ирандык,ирандык,audio/street_019_full.wav,8000,1,1.408
+street_019_short,19,Ирандык,short,skipped,,,,,,
+street_019_natural,19,Ирандык,natural,skipped,,,,,,
+street_020_full,20,Искра,full,saved,Искра,искра,audio/street_020_full.wav,8000,1,1.749
+street_020_short,20,Искра,short,skipped,,,,,,
+street_020_natural,20,Искра,natural,skipped,,,,,,
+street_021_full,21,Ишмурзы Хидиятова,full,saved,Ишмурзы Хидиятова,ишмурзы хидиятова,audio/street_021_full.wav,8000,1,2.944
+street_021_short,21,Ишмурзы Хидиятова,short,skipped,,,,,,
+street_021_natural,21,Ишмурзы Хидиятова,natural,skipped,,,,,,
+street_022_full,22,Ишмухамета Мырзакаева,full,saved,Ишмухамета Мырзакаева,ишмухамета мырзакаева,audio/street_022_full.wav,8000,1,3.424
+street_022_short,22,Ишмухамета Мырзакаева,short,skipped,,,,,,
+street_022_natural,22,Ишмухамета Мырзакаева,natural,skipped,,,,,,
+street_023_full,23,Караташ,full,saved,Караташ,караташ,audio/street_023_full.wav,8000,1,1.973
+street_023_short,23,Караташ,short,skipped,,,,,,
+street_023_natural,23,Караташ,natural,skipped,,,,,,
+street_024_full,24,Кима Ахмедьянова,full,saved,Кима Ахмедьянова,кима ахмедьянова,audio/street_024_full.wav,8000,1,3.851
+street_024_short,24,Кима Ахмедьянова,short,skipped,,,,,,
+street_024_natural,24,Кима Ахмедьянова,natural,skipped,,,,,,
+street_025_full,25,Кирова,full,saved,Кирова,кирова,audio/street_025_full.wav,8000,1,1.312
+street_025_short,25,Кирова,short,skipped,,,,,,
+street_025_natural,25,Кирова,natural,skipped,,,,,,
+street_026_full,26,Колхозная,full,saved,Колхозная,колхозная,audio/street_026_full.wav,8000,1,1.739
+street_026_short,26,Колхозная,short,skipped,,,,,,
+street_026_natural,26,Колхозная,natural,skipped,,,,,,
+street_027_full,27,Комарова,full,saved,Комарова,комарова,audio/street_027_full.wav,8000,1,3.765
+street_027_short,27,Комарова,short,skipped,,,,,,
+street_027_natural,27,Комарова,natural,skipped,,,,,,
+street_028_full,28,Коммунистическая,full,saved,Коммунистическая,коммунистическая,audio/street_028_full.wav,8000,1,2.261
+street_028_short,28,Коммунистическая,short,skipped,,,,,,
+street_028_natural,28,Коммунистическая,natural,skipped,,,,,,
+street_029_full,29,Комсомольская,full,saved,Комсомольская,комсомольская,audio/street_029_full.wav,8000,1,1.824
+street_029_short,29,Комсомольская,short,skipped,,,,,,
+street_029_natural,29,Комсомольская,natural,skipped,,,,,,
+street_030_full,30,Курьятмас,full,saved,Курьятмас,курьятмас,audio/street_030_full.wav,8000,1,2.027
+street_030_short,30,Курьятмас,short,skipped,,,,,,
+street_030_natural,30,Курьятмас,natural,skipped,,,,,,
+street_031_full,31,Ленина,full,saved,Ленина,ленина,audio/street_031_full.wav,8000,1,1.621
+street_031_short,31,Ленина,short,skipped,,,,,,
+street_031_natural,31,Ленина,natural,skipped,,,,,,
+street_032_full,32,Лесная,full,saved,Лесная,лесная,audio/street_032_full.wav,8000,1,1.536
+street_032_short,32,Лесная,short,skipped,,,,,,
+street_032_natural,32,Лесная,natural,skipped,,,,,,
+street_033_full,33,Луговая,full,saved,Луговая,луговая,audio/street_033_full.wav,8000,1,1.643
+street_033_short,33,Луговая,short,skipped,,,,,,
+street_033_natural,33,Луговая,natural,skipped,,,,,,
+street_034_full,34,Ляйсан,full,saved,Ляйсан,ляйсан,audio/street_034_full.wav,8000,1,2.336
+street_034_short,34,Ляйсан,short,skipped,,,,,,
+street_034_natural,34,Ляйсан,natural,skipped,,,,,,
+street_035_full,35,Магнитогорская,full,saved,Магнитогорская,магнитогорская,audio/street_035_full.wav,8000,1,3.072
+street_035_short,35,Магнитогорская,short,skipped,,,,,,
+street_035_natural,35,Магнитогорская,natural,skipped,,,,,,
+street_036_full,36,Мажита Гафури,full,saved,Мажита Гафури,мажита гафури,audio/street_036_full.wav,8000,1,5.173
+street_036_short,36,Мажита Гафури,short,skipped,,,,,,
+street_036_natural,36,Мажита Гафури,natural,skipped,,,,,,
+street_037_full,37,Малика Якшимбетова,full,saved,Малика Якшимбетова,малика якшимбетова,audio/street_037_full.wav,8000,1,2.613
+street_037_short,37,Малика Якшимбетова,short,skipped,,,,,,
+street_037_natural,37,Малика Якшимбетова,natural,skipped,,,,,,
+street_038_full,38,Матросова,full,saved,Матросова,матросова,audio/street_038_full.wav,8000,1,2.251
+street_038_short,38,Матросова,short,skipped,,,,,,
+street_038_natural,38,Матросова,natural,skipped,,,,,,
+street_039_full,39,Мелиораторов,full,saved,Мелиораторов,мелиораторов,audio/street_039_full.wav,8000,1,2.837
+street_039_short,39,Мелиораторов,short,skipped,,,,,,
+street_039_natural,39,Мелиораторов,natural,skipped,,,,,,
+street_040_full,40,Механизаторов,full,saved,Механизаторов,механизаторов,audio/street_040_full.wav,8000,1,3.147
+street_040_short,40,Механизаторов,short,skipped,,,,,,
+street_040_natural,40,Механизаторов,natural,skipped,,,,,,
+street_041_full,41,Миллята Хакимова,full,saved,Миллята Хакимова,миллята хакимова,audio/street_041_full.wav,8000,1,2.368
+street_041_short,41,Миллята Хакимова,short,skipped,,,,,,
+street_041_natural,41,Миллята Хакимова,natural,skipped,,,,,,
+street_042_full,42,Минислама Мирсаяпова,full,saved,Минислама Мирсаяпова,минислама мирсаяпова,audio/street_042_full.wav,8000,1,2.571
+street_042_short,42,Минислама Мирсаяпова,short,skipped,,,,,,
+street_042_natural,42,Минислама Мирсаяпова,natural,skipped,,,,,,
+street_043_full,43,Мира,full,saved,Мира,мира,audio/street_043_full.wav,8000,1,1.312
+street_043_short,43,Мира,short,skipped,,,,,,
+street_043_natural,43,Мира,natural,skipped,,,,,,
+street_044_full,44,Михаила Лермонтова,full,saved,Михаила Лермонтова,михаила лермонтова,audio/street_044_full.wav,8000,1,2.901
+street_044_short,44,Михаила Лермонтова,short,skipped,,,,,,
+street_044_natural,44,Михаила Лермонтова,natural,skipped,,,,,,
+street_045_full,45,Молодежная,full,saved,Молодежная,молодежная,audio/street_045_full.wav,8000,1,2.144
+street_045_short,45,Молодежная,short,skipped,,,,,,
+street_045_natural,45,Молодежная,natural,skipped,,,,,,
+street_046_full,46,Мугалляма Мирхайдарова,full,saved,Мугалляма Мирхайдарова,мугалляма мирхайдарова,audio/street_046_full.wav,8000,1,3.285
+street_046_short,46,Мугалляма Мирхайдарова,short,skipped,,,,,,
+street_046_natural,46,Мугалляма Мирхайдарова,natural,skipped,,,,,,
+street_047_full,47,Мурзахана Шамсутдинова,full,saved,Мурзахана Шамсутдинова,мурзахана шамсутдинова,audio/street_047_full.wav,8000,1,2.827
+street_047_short,47,Мурзахана Шамсутдинова,short,skipped,,,,,,
+street_047_natural,47,Мурзахана Шамсутдинова,natural,skipped,,,,,,
+street_048_full,48,Мустая Карима,full,saved,Мустая Карима,мустая карима,audio/street_048_full.wav,8000,1,2.379
+street_048_short,48,Мустая Карима,short,skipped,,,,,,
+street_048_natural,48,Мустая Карима,natural,skipped,,,,,,
+street_049_full,49,Мусы Гареева,full,saved,Мусы Гареева,мусы гареева,audio/street_049_full.wav,8000,1,2.475
+street_049_short,49,Мусы Гареева,short,skipped,,,,,,
+street_049_natural,49,Мусы Гареева,natural,skipped,,,,,,
+street_050_full,50,Мусы Муртазина,full,saved,Мусы Муртазина,мусы муртазина,audio/street_050_full.wav,8000,1,2.592
+street_050_short,50,Мусы Муртазина,short,skipped,,,,,,
+street_050_natural,50,Мусы Муртазина,natural,skipped,,,,,,
+street_051_full,51,Нажипа Суфьянова,full,saved,Нажипа Суфьянова,нажипа суфьянова,audio/street_051_full.wav,8000,1,2.88
+street_051_short,51,Нажипа Суфьянова,short,skipped,,,,,,
+street_051_natural,51,Нажипа Суфьянова,natural,skipped,,,,,,
+street_052_full,52,Николая Гоголя,full,saved,Николая Гоголя,николая гоголя,audio/street_052_full.wav,8000,1,2.261
+street_052_short,52,Николая Гоголя,short,skipped,,,,,,
+street_052_natural,52,Николая Гоголя,natural,skipped,,,,,,
+street_053_full,53,Партизанская,full,saved,Партизанская,партизанская,audio/street_053_full.wav,8000,1,3.317
+street_053_short,53,Партизанская,short,skipped,,,,,,
+street_053_natural,53,Партизанская,natural,skipped,,,,,,
+street_054_full,54,Первомайская,full,saved,Первомайская,первомайская,audio/street_054_full.wav,8000,1,1.621
+street_054_short,54,Первомайская,short,skipped,,,,,,
+street_054_natural,54,Первомайская,natural,skipped,,,,,,
+street_055_full,55,Пионерская,full,saved,Пионерская,пионерская,audio/street_055_full.wav,8000,1,1.493
+street_055_short,55,Пионерская,short,skipped,,,,,,
+street_055_natural,55,Пионерская,natural,skipped,,,,,,
+street_056_full,56,Пятая,full,saved,Пятая,пятая,audio/street_056_full.wav,8000,1,1.632
+street_056_short,56,Пятая,short,skipped,,,,,,
+street_056_natural,56,Пятая,natural,skipped,,,,,,
+street_057_full,57,Раиса Усманова,full,saved,Раиса Усманова,раиса усманова,audio/street_057_full.wav,8000,1,2.656
+street_057_short,57,Раиса Усманова,short,skipped,,,,,,
+street_057_natural,57,Раиса Усманова,natural,skipped,,,,,,
+street_058_full,58,Рамазана Уметбаева,full,saved,Рамазана Уметбаева,рамазана уметбаева,audio/street_058_full.wav,8000,1,2.112
+street_058_short,58,Рамазана Уметбаева,short,skipped,,,,,,
+street_058_natural,58,Рамазана Уметбаева,natural,skipped,,,,,,
+street_059_full,59,Рами Гарипова,full,saved,Рами Гарипова,рами гарипова,audio/street_059_full.wav,8000,1,2.155
+street_059_short,59,Рами Гарипова,short,skipped,,,,,,
+street_059_natural,59,Рами Гарипова,natural,skipped,,,,,,
+street_060_full,60,Расуля Кужахметова,full,saved,Расуля Кужахметова,расуля кужахметова,audio/street_060_full.wav,8000,1,2.336
+street_060_short,60,Расуля Кужахметова,short,skipped,,,,,,
+street_060_natural,60,Расуля Кужахметова,natural,skipped,,,,,,
+street_061_full,61,Рауфа Давлетова,full,saved,Рауфа Давлетова,рауфа давлетова,audio/street_061_full.wav,8000,1,1.899
+street_061_short,61,Рауфа Давлетова,short,skipped,,,,,,
+street_061_natural,61,Рауфа Давлетова,natural,skipped,,,,,,
+street_062_full,62,Рафика Сальманова,full,saved,Рафика Сальманова,рафика сальманова,audio/street_062_full.wav,8000,1,2.549
+street_062_short,62,Рафика Сальманова,short,skipped,,,,,,
+street_062_natural,62,Рафика Сальманова,natural,skipped,,,,,,
+street_063_full,63,Рихарда Зорге,full,saved,Рихарда Зорге,рихарда зорге,audio/street_063_full.wav,8000,1,1.568
+street_063_short,63,Рихарда Зорге,short,skipped,,,,,,
+street_063_natural,63,Рихарда Зорге,natural,skipped,,,,,,
+street_064_full,64,Сабантуй,full,saved,Сабантуй,сабантуй,audio/street_064_full.wav,8000,1,1.941
+street_064_short,64,Сабантуй,short,skipped,,,,,,
+street_064_natural,64,Сабантуй,natural,skipped,,,,,,
+street_065_full,65,Садовая,full,saved,Садовая,садовая,audio/street_065_full.wav,8000,1,3.115
+street_065_short,65,Садовая,short,skipped,,,,,,
+street_065_natural,65,Садовая,natural,skipped,,,,,,
+street_066_full,66,Салавата Кадырова,full,saved,Салавата Кадырова,салавата кадырова,audio/street_066_full.wav,8000,1,1.6
+street_066_short,66,Салавата Кадырова,short,skipped,,,,,,
+street_066_natural,66,Салавата Кадырова,natural,skipped,,,,,,
+street_067_full,67,Салавата Юлаева,full,saved,Салавата Юлаева,салавата юлаева,audio/street_067_full.wav,8000,1,1.771
+street_067_short,67,Салавата Юлаева,short,skipped,,,,,,
+street_067_natural,67,Салавата Юлаева,natural,skipped,,,,,,
+street_068_full,68,Сарии Миржановой,full,saved,Сарии Миржановой,сарии миржановой,audio/street_068_full.wav,8000,1,3.04
+street_068_short,68,Сарии Миржановой,short,skipped,,,,,,
+street_068_natural,68,Сарии Миржановой,natural,skipped,,,,,,
+street_069_full,69,Сафы Истамгалина,full,saved,Сафы Истамгалина,сафы истамгалина,audio/street_069_full.wav,8000,1,2.635
+street_069_short,69,Сафы Истамгалина,short,skipped,,,,,,
+street_069_natural,69,Сафы Истамгалина,natural,skipped,,,,,,
+street_070_full,70,Сергея Аксакова,full,saved,Сергея Аксакова,сергея аксакова,audio/street_070_full.wav,8000,1,2.539
+street_070_short,70,Сергея Аксакова,short,skipped,,,,,,
+street_070_natural,70,Сергея Аксакова,natural,skipped,,,,,,
+street_071_full,71,Сергея Есенина,full,saved,Сергея Есенина,сергея есенина,audio/street_071_full.wav,8000,1,2.443
+street_071_short,71,Сергея Есенина,short,skipped,,,,,,
+street_071_natural,71,Сергея Есенина,natural,skipped,,,,,,
+street_072_full,72,Советская,full,saved,Советская,советская,audio/street_072_full.wav,8000,1,1.803
+street_072_short,72,Советская,short,skipped,,,,,,
+street_072_natural,72,Советская,natural,skipped,,,,,,
+street_073_full,73,Солнечная,full,saved,Солнечная,солнечная,audio/street_073_full.wav,8000,1,1.472
+street_073_short,73,Солнечная,short,skipped,,,,,,
+street_073_natural,73,Солнечная,natural,skipped,,,,,,
+street_074_full,74,Сосновая,full,saved,Сосновая,сосновая,audio/street_074_full.wav,8000,1,2.208
+street_074_short,74,Сосновая,short,skipped,,,,,,
+street_074_natural,74,Сосновая,natural,skipped,,,,,,
+street_075_full,75,Строителей,full,saved,Строителей,строителей,audio/street_075_full.wav,8000,1,1.984
+street_075_short,75,Строителей,short,skipped,,,,,,
+street_075_natural,75,Строителей,natural,skipped,,,,,,
+street_076_full,76,Тагира Кусимова,full,saved,Тагира Кусимова,тагира кусимова,audio/street_076_full.wav,8000,1,2.304
+street_076_short,76,Тагира Кусимова,short,skipped,,,,,,
+street_076_natural,76,Тагира Кусимова,natural,skipped,,,,,,
+street_077_full,77,Тамьян,full,saved,Тамьян,тамьян,audio/street_077_full.wav,8000,1,1.568
+street_077_short,77,Тамьян,short,skipped,,,,,,
+street_077_natural,77,Тамьян,natural,skipped,,,,,,
+street_078_full,78,Тангатарская,full,saved,Тангатарская,тангатарская,audio/street_078_full.wav,8000,1,1.771
+street_078_short,78,Тангатарская,short,skipped,,,,,,
+street_078_natural,78,Тангатарская,natural,skipped,,,,,,
+street_079_full,79,Тарян Узяк,full,saved,Тарян Узяк,тарян узяк,audio/street_079_full.wav,8000,1,2.208
+street_079_short,79,Тарян Узяк,short,skipped,,,,,,
+street_079_natural,79,Тарян Узяк,natural,skipped,,,,,,
+street_080_full,80,Тунгаур,full,saved,Тунгаур,тунгаур,audio/street_080_full.wav,8000,1,1.515
+street_080_short,80,Тунгаур,short,skipped,,,,,,
+street_080_natural,80,Тунгаур,natural,skipped,,,,,,
+street_081_full,81,Улажа,full,saved,Улажа,улажа,audio/street_081_full.wav,8000,1,2.517
+street_081_short,81,Улажа,short,skipped,,,,,,
+street_081_natural,81,Улажа,natural,skipped,,,,,,
+street_082_full,82,Урал Батыра,full,saved,Урал Батыра,урал батыра,audio/street_082_full.wav,8000,1,1.44
+street_082_short,82,Урал Батыра,short,skipped,,,,,,
+street_082_natural,82,Урал Батыра,natural,skipped,,,,,,
+street_083_full,83,Уральская,full,saved,Уральская,уральская,audio/street_083_full.wav,8000,1,1.419
+street_083_short,83,Уральская,short,skipped,,,,,,
+street_083_natural,83,Уральская,natural,skipped,,,,,,
+street_084_full,84,Учалинская,full,saved,Учалинская,учалинская,audio/street_084_full.wav,8000,1,2.123
+street_084_short,84,Учалинская,short,skipped,,,,,,
+street_084_natural,84,Учалинская,natural,skipped,,,,,,
+street_085_full,85,Файзи Гаскарова,full,saved,Файзи Гаскарова,файзи гаскарова,audio/street_085_full.wav,8000,1,2.517
+street_085_short,85,Файзи Гаскарова,short,skipped,,,,,,
+street_085_natural,85,Файзи Гаскарова,natural,skipped,,,,,,
+street_086_full,86,Файзрахмана Хисматуллина,full,saved,Файзрахмана Хисматуллина,файзрахмана хисматуллина,audio/street_086_full.wav,8000,1,2.517
+street_086_short,86,Файзрахмана Хисматуллина,short,skipped,,,,,,
+street_086_natural,86,Файзрахмана Хисматуллина,natural,skipped,,,,,,
+street_087_full,87,Фаттаха Ибрагимова,full,saved,Фаттаха Ибрагимова,фаттаха ибрагимова,audio/street_087_full.wav,8000,1,2.56
+street_087_short,87,Фаттаха Ибрагимова,short,skipped,,,,,,
+street_087_natural,87,Фаттаха Ибрагимова,natural,skipped,,,,,,
+street_088_full,88,Фахиры Гумеровой,full,saved,Фахиры Гумеровой,фахиры гумеровой,audio/street_088_full.wav,8000,1,2.24
+street_088_short,88,Фахиры Гумеровой,short,skipped,,,,,,
+street_088_natural,88,Фахиры Гумеровой,natural,skipped,,,,,,
+street_089_full,89,Хадии Давлетшиной,full,saved,Хадии Давлетшиной,хадии давлетшиной,audio/street_089_full.wav,8000,1,2.133
+street_089_short,89,Хадии Давлетшиной,short,skipped,,,,,,
+street_089_natural,89,Хадии Давлетшиной,natural,skipped,,,,,,
+street_090_full,90,Целлинная,full,saved,Целлинная,целлинная,audio/street_090_full.wav,8000,1,2.837
+street_090_short,90,Целлинная,short,skipped,,,,,,
+street_090_natural,90,Целлинная,natural,skipped,,,,,,
+street_091_full,91,Чапаева,full,saved,Чапаева,чапаева,audio/street_091_full.wav,8000,1,1.515
+street_091_short,91,Чапаева,short,skipped,,,,,,
+street_091_natural,91,Чапаева,natural,skipped,,,,,,
+street_092_full,92,Шагали Шакмана,full,saved,Шагали Шакмана,шагали шакмана,audio/street_092_full.wav,8000,1,2.379
+street_092_short,92,Шагали Шакмана,short,skipped,,,,,,
+street_092_natural,92,Шагали Шакмана,natural,skipped,,,,,,
+street_093_full,93,Шаймуратова,full,saved,Шаймуратова,шаймуратова,audio/street_093_full.wav,8000,1,1.472
+street_093_short,93,Шаймуратова,short,skipped,,,,,,
+street_093_natural,93,Шаймуратова,natural,skipped,,,,,,
+street_094_full,94,Шайхизады Бабича,full,saved,Шайхизады Бабича,шайхизады бабича,audio/street_094_full.wav,8000,1,3.04
+street_094_short,94,Шайхизады Бабича,short,skipped,,,,,,
+street_094_natural,94,Шайхизады Бабича,natural,skipped,,,,,,
+street_095_full,95,Шамигуллы Азаматова,full,saved,Шамигуллы Азаматова,шамигуллы азаматова,audio/street_095_full.wav,8000,1,3.648
+street_095_short,95,Шамигуллы Азаматова,short,skipped,,,,,,
+street_095_natural,95,Шамигуллы Азаматова,natural,skipped,,,,,,
+street_096_full,96,Школьная,full,saved,Школьная,школьная,audio/street_096_full.wav,8000,1,2.411
+street_096_short,96,Школьная,short,skipped,,,,,,
+street_096_natural,96,Школьная,natural,skipped,,,,,,
+street_097_full,97,Юбилейная,full,saved,Юбилейная,юбилейная,audio/street_097_full.wav,8000,1,3.851
+street_097_short,97,Юбилейная,short,skipped,,,,,,
+street_097_natural,97,Юбилейная,natural,skipped,,,,,,
+street_098_full,98,Южная,full,saved,Южная,южная,audio/street_098_full.wav,8000,1,1.376
+street_098_short,98,Южная,short,skipped,,,,,,
+street_098_natural,98,Южная,natural,skipped,,,,,,
+street_099_full,99,Яныбая Хамматова,full,saved,Яныбая Хамматова,яныбая хамматова,audio/street_099_full.wav,8000,1,2.677
+street_099_short,99,Яныбая Хамматова,short,skipped,,,,,,
+street_099_natural,99,Яныбая Хамматова,natural,skipped,,,,,,
+street_100_full,100,Сорок лет Октября,full,saved,Сорок лет Октября,сорок лет октября,audio/street_100_full.wav,8000,1,3.061
+street_100_short,100,Сорок лет Октября,short,skipped,,,,,,
+street_100_natural,100,Сорок лет Октября,natural,skipped,,,,,,
+street_101_full,101,Сорок лет Победы,full,saved,Сорок лет Победы,сорок лет победы,audio/street_101_full.wav,8000,1,3.211
+street_101_short,101,Сорок лет Победы,short,skipped,,,,,,
+street_101_natural,101,Сорок лет Победы,natural,skipped,,,,,,
+street_102_full,102,Пятьдесят лет Победы,full,saved,Пятьдесят лет Победы,пятьдесят лет победы,audio/street_102_full.wav,8000,1,2.741
+street_102_short,102,Пятьдесят лет Победы,short,skipped,,,,,,
+street_102_natural,102,Пятьдесят лет Победы,natural,skipped,,,,,,
+street_103_full,103,Шестьдесят лет Победы,full,saved,Шестьдесят лет Победы,шестьдесят лет победы,audio/street_103_full.wav,8000,1,2.443
+street_103_short,103,Шестьдесят лет Победы,short,skipped,,,,,,
+street_103_natural,103,Шестьдесят лет Победы,natural,skipped,,,,,,
+street_104_full,104,Шестьдесят пять лет Победы,full,saved,Шестьдесят пять лет Победы,шестьдесят пять лет победы,audio/street_104_full.wav,8000,1,2.816
+street_104_short,104,Шестьдесят пять лет Победы,short,skipped,,,,,,
+street_104_natural,104,Шестьдесят пять лет Победы,natural,skipped,,,,,,
+street_105_full,105,Семьдесят лет Октября,full,saved,Семьдесят лет Октября,семьдесят лет октября,audio/street_105_full.wav,8000,1,3.659
+street_105_short,105,Семьдесят лет Октября,short,skipped,,,,,,
+street_105_natural,105,Семьдесят лет Октября,natural,skipped,,,,,,
+street_106_full,106,Семьдесят лет Победы,full,saved,Семьдесят лет Победы,семьдесят лет победы,audio/street_106_full.wav,8000,1,5.504
+street_106_short,106,Семьдесят лет Победы,short,skipped,,,,,,
+street_106_natural,106,Семьдесят лет Победы,natural,skipped,,,,,,
+street_107_full,107,Северная,full,saved,Северная,северная,audio/street_107_full.wav,8000,1,1.568
+street_107_short,107,Северная,short,skipped,,,,,,
+street_107_natural,107,Северная,natural,skipped,,,,,,
+street_108_full,108,Тамерлана Ильгамова,full,saved,Тамерлана Ильгамова,тамерлана ильгамова,audio/street_108_full.wav,8000,1,3.211
+street_108_short,108,Тамерлана Ильгамова,short,skipped,,,,,,
+street_108_natural,108,Тамерлана Ильгамова,natural,skipped,,,,,,
+street_109_full,109,Юности,full,saved,Юности,юности,audio/street_109_full.wav,8000,1,2.165
+street_109_short,109,Юности,short,skipped,,,,,,
+street_109_natural,109,Юности,natural,skipped,,,,,,

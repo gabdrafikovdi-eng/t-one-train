@@ -1,0 +1,62 @@
+# Benchmark-only Docker Compose: T-one CPU performance benchmark.
+#
+# Completely separate from any production compose files (Taxi v3, speech-service
+# etc. are NOT touched). One command on the VPS:
+#
+#   docker compose -f docker-compose.vps-benchmark.yml up --build --abort-on-container-exit
+#
+# or simply: ./scripts/run_vps_benchmark.sh
+#
+# The container builds the image, loads T-one + official KenLM, runs the full
+# experiment series (sequential baseline -> thread sweep -> concurrency sweep
+# -> combined variants) and writes EVERYTHING to ./results/vps_benchmark_<ts>/
+# on the host, then exits. No manual exec into the container is needed.
+
+name: t-one-vps-benchmark
+
+services:
+  vps-benchmark:
+    build:
+      context: .
+      dockerfile: Dockerfile.vps-benchmark
+    image: t-one-vps-benchmark:latest
+    container_name: t-one-vps-benchmark
+    restart: "no"
+    init: true
+    environment:
+      # model/kenlm cache inside a named volume -> downloaded ONCE, reused
+      HF_HOME: /cache/huggingface
+      # reproducibility metadata, baked into system_info.txt
+      BENCHMARK_IMAGE: t-one-vps-benchmark:latest
+      BENCHMARK_IMAGE_ID: ${BENCHMARK_IMAGE_ID:-}
+      BENCHMARK_DOCKER_VERSION: ${BENCHMARK_DOCKER_VERSION:-}
+      COMPOSE_PROJECT_NAME: t-one-vps-benchmark
+      # we control ONNX Runtime threads explicitly; avoid BLAS oversubscription
+      OMP_NUM_THREADS: "1"
+      OPENBLAS_NUM_THREADS: "1"
+      MKL_NUM_THREADS: "1"
+      TOKENIZERS_PARALLELISM: "false"
+      # results are chowned back to the host user (default: first non-root uid)
+      HOST_UID: ${HOST_UID:-1000}
+      HOST_GID: ${HOST_GID:-1000}
+      # pass a thread/concurrency override through the wrapper script if needed:
+      #   BENCHMARK_ARGS="--limit 5 --threads 1 2 4 --concurrency 2 4"
+      BENCHMARK_ARGS: ${BENCHMARK_ARGS:-}
+    volumes:
+      # real dataset (the same 109 WAVs as the quality benchmark), read-only
+      - ./results/real_dataset_2026-09-18_17-16-22:/data/real_dataset:ro
+      # canonical hotword source, read-only
+      - ./streets.txt:/app/streets.txt:ro
+      # ALL benchmark outputs -> host filesystem, survive the container
+      - ./results:/app/results
+      # model.onnx + kenlm.bin cache (downloaded once, then reused offline)
+      - hf-model-cache:/cache/huggingface
+    # full run by default; BENCHMARK_ARGS can override (e.g. a 5-WAV smoke test)
+    command: >
+      --dataset /data/real_dataset
+      --streets /app/streets.txt
+      --out /app/results
+      ${BENCHMARK_ARGS}
+
+volumes:
+  hf-model-cache:

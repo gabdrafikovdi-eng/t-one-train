@@ -22,11 +22,17 @@ def test_llm_filters():
 def test_plan_counts_and_leakage(tmp_path,n):
     cfg=tomllib.loads((ROOT/'config.toml').read_text())
     cfg['samples_per_street']=n
+    # build_plan читает streets.txt из root: подкладываем фикстуру старого формата,
+    # т.к. реальный streets.txt проекта теперь в «голом» формате (hotwords.load_streets).
+    root=tmp_path/'in'; root.mkdir()
+    (root/'streets.txt').write_text(
+        'Улица Ленина\nВесенняя улица\nПереулок Искра\nУлица 65 лет Победы\n', encoding='utf-8')
+    cfg['expected_streets']=4  # размер фикстуры вместо 107 из config.toml
     llm={'accepted':['мы пока ожидаем такси на {pre}', 'я пока ожидаю такси на {pre}']}
     # Count tests use enough distinct safe LLM contexts for the 15% quota.
     llm['accepted'] += [f'{g}, {t}' for g in ['алло','здравствуйте','добрый день','добрый вечер'] for t in llm['accepted'][:]]
     out=tmp_path/'corpus'
-    build_plan(cfg,ROOT,out,llm)
+    build_plan(cfg,root,out,llm)
     counts={}
     texts=set()
     families={}
@@ -37,12 +43,12 @@ def test_plan_counts_and_leakage(tmp_path,n):
         families[row['family']]=row['split']
         key=row['street'],row['split']
         counts[key]=counts.get(key,0)+1
-    assert len(texts)==107*n
+    assert len(texts)==4*n  # fixture has 4 streets
     for (street,split),count in counts.items():
         assert count==split_counts(n)[split]
     before=(out/'plan.jsonl').read_bytes()
-    build_plan(cfg,ROOT,out,llm)
+    build_plan(cfg,root,out,llm)
     assert (out/'plan.jsonl').read_bytes()==before
     cfg['seed']+=1
     with pytest.raises(ValueError,match='changed'):
-        build_plan(cfg,ROOT,out,llm)
+        build_plan(cfg,root,out,llm)
